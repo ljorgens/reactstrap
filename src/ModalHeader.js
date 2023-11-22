@@ -1,6 +1,4 @@
 import React from 'react';
-import classNames from 'classnames';
-import { mapToCssModules } from './utils';
 
 function ModalHeader(props) {
   let closeButton;
@@ -16,17 +14,13 @@ function ModalHeader(props) {
     ...attributes
   } = props;
 
-  const classes = mapToCssModules(
-    classNames(className, 'modal-header'),
-    cssModule,
-  );
 
   if (!close && toggle) {
     closeButton = (
       <button
         type="button"
         onClick={toggle}
-        className={mapToCssModules('btn-close', cssModule)}
+        className='btn-close'
         aria-label={closeAriaLabel}
       />
     );
@@ -34,7 +28,7 @@ function ModalHeader(props) {
 
   return (
     <WrapTag {...attributes} className={classes}>
-      <Tag className={mapToCssModules('modal-title', cssModule)}>
+      <Tag className='modal-title'>
         {children}
       </Tag>
       {close || closeButton}
