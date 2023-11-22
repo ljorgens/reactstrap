@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Portal from './Portal';
 import Fade from './Fade';
@@ -12,78 +11,10 @@ import {
   focusableElements,
   TransitionTimeouts,
   keyCodes,
-  targetPropType,
   getTarget,
 } from './utils';
 
 function noop() {}
-
-const FadePropTypes = PropTypes.shape(Fade.propTypes);
-
-const propTypes = {
-  /** */
-  autoFocus: PropTypes.bool,
-  /** Add backdrop to modal */
-  backdrop: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf(['static'])]),
-  /** add custom classname to backdrop */
-  backdropClassName: PropTypes.string,
-  backdropTransition: FadePropTypes,
-  /** Vertically center the modal */
-  centered: PropTypes.bool,
-  /** Add children for the modal to wrap */
-  children: PropTypes.node,
-  /** Add custom className for modal content */
-  contentClassName: PropTypes.string,
-  className: PropTypes.string,
-  container: targetPropType,
-  cssModule: PropTypes.object,
-  external: PropTypes.node,
-  /** Enable/Disable animation */
-  fade: PropTypes.bool,
-  /** Make the modal fullscreen */
-  fullscreen: PropTypes.oneOfType([
-    PropTypes.bool,
-    PropTypes.oneOf(['sm', 'md', 'lg', 'xl']),
-  ]),
-  innerRef: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.string,
-    PropTypes.func,
-  ]),
-  /** The status of the modal, either open or close */
-  isOpen: PropTypes.bool,
-  /** Allow modal to be closed with escape key. */
-  keyboard: PropTypes.bool,
-  /** Identifies the element (or elements) that labels the current element. */
-  labelledBy: PropTypes.string,
-  modalClassName: PropTypes.string,
-  modalTransition: FadePropTypes,
-  /** Function to be triggered on close */
-  onClosed: PropTypes.func,
-  /** Function to be triggered on enter */
-  onEnter: PropTypes.func,
-  /** Function to be triggered on exit */
-  onExit: PropTypes.func,
-  /** Function to be triggered on open */
-  onOpened: PropTypes.func,
-  /** Returns focus to the element that triggered opening of the modal */
-  returnFocusAfterClose: PropTypes.bool,
-  /** Accessibility role */
-  role: PropTypes.string,
-  /** Make the modal scrollable */
-  scrollable: PropTypes.bool,
-  /** Two optional sizes `lg` and `sm` */
-  size: PropTypes.string,
-  /** Function to toggle modal visibility */
-  toggle: PropTypes.func,
-  trapFocus: PropTypes.bool,
-  /** Unmounts the modal when modal is closed */
-  unmountOnClose: PropTypes.bool,
-  wrapClassName: PropTypes.string,
-  zIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-};
-
-const propsToOmit = Object.keys(propTypes);
 
 const defaultProps = {
   isOpen: false,
@@ -570,7 +501,6 @@ class Modal extends React.Component {
   }
 }
 
-Modal.propTypes = propTypes;
 Modal.defaultProps = defaultProps;
 Modal.openCount = 0;
 Modal.originalBodyOverflow = null;
