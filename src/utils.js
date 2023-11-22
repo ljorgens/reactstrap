@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-
 // https://github.com/twbs/bootstrap/blob/v4.0.0-alpha.4/js/src/modal.js#L436-L443
 export function getScrollbarWidth() {
   let scrollDiv = document.createElement('div');
@@ -100,18 +98,6 @@ export function warnOnce(message) {
   }
 }
 
-export function deprecated(propType, explanation) {
-  return function validate(props, propName, componentName, ...rest) {
-    if (props[propName] !== null && typeof props[propName] !== 'undefined') {
-      warnOnce(
-        `"${propName}" property of "${componentName}" has been deprecated.\n${explanation}`,
-      );
-    }
-
-    return propType(props, propName, componentName, ...rest);
-  };
-}
-
 // Shim Element if needed (e.g. in Node environment)
 const Element =
   (typeof window === 'object' && window.Element) || function () {};
@@ -128,26 +114,6 @@ export function DOMElement(props, propName, componentName) {
   }
 }
 
-export const targetPropType = PropTypes.oneOfType([
-  PropTypes.string,
-  PropTypes.func,
-  DOMElement,
-  PropTypes.shape({ current: PropTypes.any }),
-]);
-
-export const tagPropType = PropTypes.oneOfType([
-  PropTypes.func,
-  PropTypes.string,
-  PropTypes.shape({ $$typeof: PropTypes.symbol, render: PropTypes.func }),
-  PropTypes.arrayOf(
-    PropTypes.oneOfType([
-      PropTypes.func,
-      PropTypes.string,
-      PropTypes.shape({ $$typeof: PropTypes.symbol, render: PropTypes.func }),
-    ]),
-  ),
-]);
-
 // These are all setup to match what is in the bootstrap _variables.scss
 // https://github.com/twbs/bootstrap/blob/v4-dev/scss/_variables.scss
 export const TransitionTimeouts = {
@@ -161,21 +127,6 @@ export const TransitionTimeouts = {
 // Duplicated Transition.propType keys to ensure that Reactstrap builds
 // for distribution properly exclude these keys for nested child HTML attributes
 // since `react-transition-group` removes propTypes in production builds.
-export const TransitionPropTypeKeys = [
-  'in',
-  'mountOnEnter',
-  'unmountOnExit',
-  'appear',
-  'enter',
-  'exit',
-  'timeout',
-  'onEnter',
-  'onEntering',
-  'onEntered',
-  'onExit',
-  'onExiting',
-  'onExited',
-];
 
 export const TransitionStatuses = {
   ENTERING: 'entering',
